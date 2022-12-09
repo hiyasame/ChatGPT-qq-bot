@@ -1,12 +1,11 @@
-import { ChatGPTAPI } from "chatgpt"
 import dotenv from "dotenv"
 import { createClient, Platform } from "oicq"
+import { send } from "./conversation"
 
 dotenv.config()
 
 const ID = parseInt(process.env.ID!)
 const PASSWORD = process.env.PASSWORD!
-const api = new ChatGPTAPI({ sessionToken: process.env.TOKEN! })
 
 const bot = createClient(ID, {
     platform: Platform.iPad
@@ -19,9 +18,14 @@ bot.on("system.login.slider", function (e) {
 
 bot.on("message.group", async function (event) {
     if (event.atme) {
-        const msg = event.toString().replace(`{at:${this.uin}}`, "")
-        const resp = await api.sendMessage(msg)
-        event.reply(resp, true)
-        console.log({ msg, resp })
+        try {
+            const msg = event.toString().replace(`{at:${this.uin}}`, "")
+            const resp = await send(event.group_id, msg)
+            event.reply(resp, true)
+            console.log({ msg, resp })
+        } catch (e) {
+            event.reply(`异常: ${e}`)
+            console.log(e)
+        }
     }
 })

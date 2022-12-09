@@ -4,14 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node --loader ts-node/esm ./src/index.ts",
+    "start": "node --loader ts-node/esm --es-module-specifier-resolution=node ./src/index.ts",
+    "dev": "tsc && node ./dist/index.js",
     "build": "tsc"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chatgpt": "^1.4.0",
+    "chatgpt": "^2.0.5",
     "dotenv": "^16.0.3",
     "oicq": "^2.3.1"
   },
