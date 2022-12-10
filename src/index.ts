@@ -1,6 +1,7 @@
 import dotenv from "dotenv"
-import { createClient, Platform } from "oicq"
-import { send } from "./conversation"
+import { createClient, Platform, segment } from "oicq"
+import { resetThread, send } from "./conversation"
+import renderMarkdown from "./md-render"
 
 dotenv.config()
 
@@ -20,11 +21,22 @@ bot.on("message.group", async function (event) {
     if (event.atme) {
         try {
             const msg = event.toString().replace(`{at:${this.uin}}`, "")
+            if (msg.includes("reset thread")) {
+                resetThread(event.group_id)
+                event.reply("时间线已重置", true)
+                return
+            }
             const resp = await send(event.group_id, msg)
-            event.reply(resp, true)
+            // 包含代码就渲染到图片上
+            if (resp.includes("```")) {
+                const respImage = segment.image(await renderMarkdown(resp))
+                event.reply(respImage, true)
+            } else {
+                event.reply(resp, true)
+            }
             console.log({ msg, resp })
         } catch (e) {
-            event.reply(`异常: ${e}`)
+            event.reply(`异常: ${e}`, true)
             console.log(e)
         }
     }

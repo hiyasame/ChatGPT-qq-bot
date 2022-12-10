@@ -28,6 +28,11 @@ export const send = async (id: number | string, context: string) => {
   return conversation.sendMessage(context, { timeoutMs: 2 * 60 * 1000 });
 };
 
+
+export const resetThread = async (id: number | string) => {
+    memory.delete(id.toString())
+}
+
 /**
  * create a new conversation
  */

@@ -13,6 +13,8 @@ ID = "123456"
 PASSWORD = ""
 # sessionToken
 TOKEN = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..DDDnAl1YdPv4Ls-P.09IgO207SHZTtFG9iv1SgtUJFfgKabD83CZ1WGFbECDSUXd4fEj73suQag_1qO2P_H_4PBHmpVA2OIQ"
+# md代码块语法高亮主题
+HIGHLIGHT_STYLE = "github-dark"
 ~~~
 
 或者手动指定也可
