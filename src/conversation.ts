@@ -1,45 +1,34 @@
-import { ChatGPTAPI, ChatGPTConversation } from 'chatgpt';
+import { ChatGPTAPI, ChatMessage } from 'chatgpt';
 import { config } from 'dotenv';
 
 config()
 
 // store conversation
-const memory = new Map<string, ChatGPTConversation>();
+const memory = new Map<string, ChatMessage>();
 
 const api = new ChatGPTAPI({
-  sessionToken: process.env.TOKEN!,
+  apiKey: process.env.TOKEN!,
 });
-
-const check = () => {
-  return api.ensureAuth();
-};
 
 /**
  * send message to chatGPT
  */
 export const send = async (id: number | string, context: string) => {
   const sId = id.toString();
-  let conversation = memory.get(sId);
+  let lastConversation = memory.get(sId);
 
-  if (!conversation) {
-    conversation = await create(sId);
-  }
+  let res = await api.sendMessage(context, { 
+    timeoutMs: 2 * 60 * 1000,
+    conversationId: lastConversation?.conversationId,
+    parentMessageId: lastConversation?.id
+   });
 
-  return conversation.sendMessage(context, { timeoutMs: 2 * 60 * 1000 });
+   memory.set(sId, res)
+
+  return res;
 };
 
 
 export const resetThread = async (id: number | string) => {
     memory.delete(id.toString())
 }
-
-/**
- * create a new conversation
- */
-export const create = async (id: number | string) => {
-  const sId = id.toString();
-  const conversation = api.getConversation();
-  await check();
-  memory.set(sId, conversation);
-  return conversation;
-};

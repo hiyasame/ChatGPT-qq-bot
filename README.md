@@ -11,7 +11,7 @@
 ID = "123456"
 # 密码
 PASSWORD = ""
-# sessionToken
+# apiKey
 TOKEN = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..DDDnAl1YdPv4Ls-P.09IgO207SHZTtFG9iv1SgtUJFfgKabD83CZ1WGFbECDSUXd4fEj73suQag_1qO2P_H_4PBHmpVA2OIQ"
 # md代码块语法高亮主题
 HIGHLIGHT_STYLE = "github-dark"
@@ -19,7 +19,7 @@ HIGHLIGHT_STYLE = "github-dark"
 
 或者手动指定也可
 
-sessionToken请自行通过浏览器在chatgpt官网获取
+APIKey 请自行前往 OpenAI 官网获取
 
 运行
 

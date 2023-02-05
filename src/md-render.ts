@@ -6,10 +6,7 @@ import { config } from "dotenv";
 
 config()
 
-const browser = await puppeteer.launch({
-    executablePath: '/usr/bin/chromium-browser',
-    args: ['--no-sandbox', '--disable-dev-shm-usage'],
-});
+const browser = await puppeteer.launch();
 const highlightCSS = await fs.readFile(`./node_modules/highlight.js/styles/${process.env.HIGHLIGHT_STYLE || "github-dark"}.css`, "utf8")
 
 const markdownIt: MarkdownIt = MarkdownIt({
@@ -67,7 +64,3 @@ export async function html2Image(source: string): Promise<Buffer> {
         page.close()
     }
 }
-
-// const html = md2html(await fs.readFile("/home/rain/Rain/project/rust/relearn_rs/class4/README.md", "utf8"))
-// await fs.writeFile("./res.png", await html2Image(html))
-// browser.close()

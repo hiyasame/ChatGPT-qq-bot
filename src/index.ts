@@ -26,7 +26,7 @@ bot.on("message.group", async function (event) {
                 event.reply("时间线已重置", true)
                 return
             }
-            const resp = await send(event.group_id, msg)
+            const resp = (await send(event.group_id, msg)).text
             // 包含代码就渲染到图片上
             if (resp.includes("```")) {
                 const respImage = segment.image(await renderMarkdown(resp))
