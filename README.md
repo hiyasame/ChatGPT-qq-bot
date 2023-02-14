@@ -15,6 +15,8 @@ PASSWORD = ""
 TOKEN = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..DDDnAl1YdPv4Ls-P.09IgO207SHZTtFG9iv1SgtUJFfgKabD83CZ1WGFbECDSUXd4fEj73suQag_1qO2P_H_4PBHmpVA2OIQ"
 # md代码块语法高亮主题
 HIGHLIGHT_STYLE = "github-dark"
+# 使用付费模型 (需要ChatGPTPlus)
+USE_PAID_MODEL = true
 ~~~
 
 或者手动指定也可

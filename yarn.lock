@@ -1224,10 +1224,10 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chatgpt@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmmirror.com/chatgpt/-/chatgpt-4.1.1.tgz#6b4f09b0976332aaf3bf713aac1b0b51c0ec42e4"
-  integrity sha512-2Hn9kjSSndvmLiRLYK1xHXxf436xwby3vmLBlLayxFFErQHW2+47zjGlaanhrFzb89MfWsf+1GPwl/qKklDUeA==
+chatgpt@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.npmmirror.com/chatgpt/-/chatgpt-4.3.2.tgz#fff77e3733c5e062c5ffbfea754666f47a6ec75d"
+  integrity sha512-5+Kh0mdP/pDJTL3kA6C6Dp43EO8T8sILPJbbQwOu3J4dK+n/tYpSXsmG6VZkmitAVOffeTonXTGDJwslc66orw==
   dependencies:
     eventsource-parser "^0.0.5"
     gpt-3-encoder "^1.1.4"
